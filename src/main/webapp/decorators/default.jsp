@@ -1,85 +1,94 @@
 <%@ include file="/taglibs.jsp" %>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
-
 <!DOCTYPE html>
-
-<html lang="en">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-    <title><decorator:title default="Welcome"/> | <fmt:message key="webapp.name"/></title>
-    <meta http-equiv="Cache-Control" content="no-cache"/>
-    <meta http-equiv="Pragma" content="no-cache"/>
-    <meta http-equiv="Expires" content="0"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link rel="shortcut icon" href="${ctx}/images/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="${ctx}/webjars/bootstrap/0.0.1-SNAPSHOT/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${ctx}/styles/app.css">
-    <script type="text/javascript" src="${ctx}/webjars/jquery/1.8.2/jquery.min.js"></script>
-    <script type="text/javascript" src="${ctx}/webjars/bootstrap/0.0.1-SNAPSHOT/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${ctx}/scripts/app.js"></script>
-    <decorator:head/>
+  <meta charset="utf-8">
+  <title>Порада раді</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="${ctx}/styles/base.css">
+    <link rel="stylesheet" href="${ctx}/styles/skeleton.css">
+    <link rel="stylesheet" href="${ctx}/styles/layout.css">
+    <link rel="stylesheet" href="${ctx}/styles/table.css">
+    <link rel="stylesheet" href="${ctx}/styles/page.css">
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+
+    <link rel="shortcut icon" href="${ctx}/images/favicon.ico">
+    <link rel="apple-touch-icon" href="${ctx}/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="${ctx}/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="${ctx}/images/apple-touch-icon-114x114.png">
+
 </head>
-<body<decorator:getProperty property="body.id" writeEntireProperty="true"/><decorator:getProperty property="body.class" writeEntireProperty="true"/>>
-<a name="top"></a>
+<body>
+  <div class="container">
+          <div class="eight columns">
+      <h1 class="remove-bottom" style="margin-top: 40px">Порада Раді</h1>
+            <p>Народна підказка, коли депутати не знають, як голосувати</p>
+      <h5>Version 0.1</h5>
+          </div>
+          <div class="eight columns">
+            <img src="images/kpd.jpg" alt="" />
+          </div>
+      <hr />
+    <div class="law-detail sixteen columns">
+          <h3>проект Закону про усунення негативних наслідків та недопущення переслідування та покарання осіб з приводу подій, які мали місце під час проведення мирних зібрань (№3787) - за основу та в цілому</h3>
+          <div class="law-detail"><h4> Закон України
+</h4>
+<p>Стаття 1. Звільнити від відповідальності осіб, які були учасниками акцій протесту та масових заходів, щодо їхніх дій і рішень у період з 21 листопада 2013 року і до дня набрання чинності цим Законом.</p>
+<p>
+Стаття 2. Всі кримінальні провадження та провадження щодо вчинення адміністративних правопорушень, відкриті з приводу подій, визначених статтею 1 цього Закону, підлягають закриттю.</p>
+<p>
+Стаття 3. Нові кримінальні провадження та провадження щодо вчинення адміністративних правопорушень не можуть бути відкриті з приводу подій, визначених статтею 1 цього Закону.</p>
+<p>
+Стаття 4. Особи, притягнуті до кримінальної відповідальності, відповідальності за адміністративні правопорушення з приводу подій, визначених статтею 1 цього Закону, підлягають звільненню від відповідальності та визнаються такими, що не мають судимості, відповідальності за адміністративні правопорушення. Уповноваженим органам прийняти рішення, що випливають з цього Закону, протягом 10 днів з дня набрання чинності цим Законом.</p>
+<p>
+Стаття 5. Цей Закон набирає чинності з дня, наступного за днем його опублікування.</p>
 
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <%-- For smartphones and smaller screens --%>
-                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="brand" href="<c:url value='/'/>">AppFuse Light</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li><a href="${ctx}/" title="Home">Home</a></li>
-                        <li><a href="${ctx}/users" title="View Users">Users</a></li>
-                        <!-- Add new menu items here -->
-                        <security:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
-                            <li class="logout"><a href="${ctx}/logout">Logout</a></li>
-                        </security:authorize>
-                    </ul>
-                </div>
-                <script type="text/javascript">
-                    $('a[href="${pageContext.request.requestURI}"]').parent().addClass('active');
-                </script>
-            </div>
+</div>
+<div class="law-link">
+  <a href="#">посилання на закон</a>
+</div>
+
+<div class="five columns">&nbsp;</div>
+
+<div class=" two columns btn red">
+  проти
+</div>
+<div class="two columns btn yellow">
+  утримався
+</div>
+<div class="two columns btn green">
+  за
+</div>
+<div class="five columns"></div>
+    </div>
+        <div class="footer center">
+        <p>2013 Майдан</p>
+
         </div>
-    </div>
 
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span7">
-                <%@ include file="/messages.jsp"%>
-                <decorator:body/>
+  </div><!-- container -->
 
-                <decorator:getProperty property="page.underground"/>
-            </div>
-            <div class="span2">
-                <div id="branding">
-                    <a href="http://appfuse.org" title="AppFuse - eliminating project startup time">
-                        <img src="${ctx}/images/powered-by-appfuse.gif" width="203" height="75" alt="AppFuse"/></a>
-                </div>
-                <h3>Resources</h3>
 
-                <p>The following is a list of resources that will make <a href="http://springframework.org">Spring</a> infinitely easier to use.</p>
+<!-- End Document
+================================================== -->
 
-                <ul class="glassList">
-                    <li><a href="http://static.springsource.org/spring/docs/3.2.x/spring-framework-reference/html/">Spring 3.2 Docs</a></li>
-                    <li><a href="http://static.springsource.org/spring/docs/3.2.x/javadoc-api/">Spring 3.2 API</a></li>
-                    <li><a href="http://www.amazon.com/s/ref=nb_ss?url=search-alias%3Daps&field-keywords=spring+framework">Spring Books</a></li>
-                    <li><a href="http://forum.springframework.org/">Spring Forums</a></li>
-                </ul>
-
-            </div>
-        </div>
-    </div>
-
-    <div id="footer">
-        <p>
-            Created by <a href="http://appfuse.org">AppFuse</a>.
-        </p>
-    </div>
 </body>
-</html>
+
+
+
