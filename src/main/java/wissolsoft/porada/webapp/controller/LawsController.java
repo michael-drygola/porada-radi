@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import wissolsoft.porada.webapp.model.Law;
 import wissolsoft.porada.webapp.service.LawsManager;
@@ -26,6 +27,13 @@ public class LawsController {
 
         model.addAttribute("laws", lawsFromDB);
         return "lawlist";
+    }
+
+    @RequestMapping("/details")
+    public String singleLaw(ModelMap model, @RequestParam(value="law") long id) {
+        final Law law = lawsManager.getLawById(id);
+        model.addAttribute("law", law);
+        return "details";
     }
 
     @PostConstruct

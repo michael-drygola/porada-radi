@@ -32,10 +32,19 @@ public class LawsDao {
     public List<Law> getAllLaws() {
         final Session session = sessionFactory.getCurrentSession();
         final Transaction transaction = session.beginTransaction();
-        final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Law.class);
+        final Criteria criteria = session.createCriteria(Law.class);
         List<Law> laws = criteria.list();
         transaction.commit();
         return laws;
+    }
+
+    @Transactional
+    public Law getLawById(long id) {
+        final Session session = sessionFactory.getCurrentSession();
+        final Transaction transaction = session.beginTransaction();
+        final Law law = (Law)session.get(Law.class, id);
+        transaction.commit();
+        return law;
     }
 
 }

@@ -21,6 +21,11 @@ public class LawsManager {
     }
 
     @Transactional
+    public Law getLawById(long id) {
+        return lawsDao.getLawById(id);
+    }
+
+    @Transactional
     public List<Law> getLaws() {
         return lawsDao.getAllLaws();
     }
