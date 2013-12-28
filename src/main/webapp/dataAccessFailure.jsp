@@ -1,4 +1,5 @@
 <%@ include file="/taglibs.jsp" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 
 <h3>Data Access Failure</h3>
 <p>
@@ -6,9 +7,9 @@
 </p>
 
 <!--
-<% 
+<%
 Exception ex = (Exception) request.getAttribute("exception");
-ex.printStackTrace(new java.io.PrintWriter(out)); 
+ex.printStackTrace(new java.io.PrintWriter(out));
 %>
 -->
 

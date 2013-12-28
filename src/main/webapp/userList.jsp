@@ -1,4 +1,5 @@
 <%@ include file="/taglibs.jsp"%>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 
 <title><fmt:message key="userList.title"/></title>
 <h2><fmt:message key="userList.title"/></h2>

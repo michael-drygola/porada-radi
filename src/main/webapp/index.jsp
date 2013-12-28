@@ -1,4 +1,5 @@
 <%@ include file="/taglibs.jsp"%>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 
 <div id="intro">
     <h2>Welcome to AppFuse Light!</h2>
