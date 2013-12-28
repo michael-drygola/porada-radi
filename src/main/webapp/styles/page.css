@@ -1,0 +1,29 @@
+img {
+    max-width:100%;
+}
+
+
+.future-laws, .past-laws{
+    margin:40px 0px;
+
+}
+.center{
+    text-align:center;
+}
+
+.btn{
+    padding:80px 0px;
+    text-align:center;
+    color:white;
+}
+
+.btn.green{
+    background-color:green;
+}
+.btn.red{
+    background-color:red;
+}
+.btn.yellow{
+    background-color:yellow;
+    color:black;
+}
