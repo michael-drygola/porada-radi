@@ -8,5 +8,7 @@
     <session-factory>
         <mapping class="org.appfuse.model.User"/>
         <mapping class="org.appfuse.model.Role"/>
+        <mapping class="wissolsoft.porada.webapp.model.Law"/>
+        <mapping class="wissolsoft.porada.webapp.model.Vote"/>
     </session-factory>
 </hibernate-configuration>

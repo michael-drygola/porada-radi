@@ -4,23 +4,32 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="law")
 public class Law {
 
-	private enum Status {
+	public enum Status {
 		ACCEPTED;
 	}
 
+	@Id
+	private long id;
 	private String caption;
 	private Date date;
 	private String description;
-	private long id;
 	private String link;
 	private Status status;
+
+	@OneToMany(mappedBy="law")
 	private List<Vote> votes = new ArrayList<Vote>();
 
 	public Law() {
 	}
-
 	public String getCaption() {
 		return caption;
 	}
