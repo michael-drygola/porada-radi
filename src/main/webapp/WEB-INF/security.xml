@@ -10,6 +10,7 @@
     <http pattern="/scripts/**" security="none"/>
     <http pattern="/webjars/**" security="none"/>
     <http pattern="/app/laws*" security="none"/>
+    <http pattern="/app/details*" security="none"/>
 
     <http auto-config="false">
         <intercept-url pattern="/app/**" access="ROLE_ADMIN,ROLE_USER"/>
