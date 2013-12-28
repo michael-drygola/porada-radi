@@ -1,8 +1,9 @@
 package wissolsoft.porada.webapp.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,15 @@ public class LawsController {
 
     @RequestMapping("/laws*")
     public String execute(ModelMap model) {
+
+        final List<Law> lawsFromDB = lawsManager.getLaws();
+
+        model.addAttribute("laws", lawsFromDB);
+        return "lawlist";
+    }
+
+    @PostConstruct
+    public void insertTestData() {
         final Law testLaw1 = new Law();
         testLaw1.setCaption("Проект Закону про усунення негативних наслідків та недопущення переслідування та покарання осіб з приводу подій, які мали місце під час проведення мирних зібрань");
         testLaw1.setDate(new Date());
@@ -33,11 +43,6 @@ public class LawsController {
 
         lawsManager.insertLaw(testLaw1);
         lawsManager.insertLaw(testLaw2);
-
-        final List<Law> lawsFromDB = lawsManager.getLaws();
-
-        model.addAttribute("laws", lawsFromDB);
-        return "lawlist";
     }
 
 }
