@@ -51,16 +51,15 @@ public class LawsController {
     public String vote(ModelMap model, @PathVariable("lawId") long id, @RequestParam(value="vote") int value) {
         final Law law = lawsManager.getLawById(id);
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-        User user = userManager.getUserByUsername(name);
+        final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        final String name = auth.getName(); //get logged in username
+        final User user = userManager.getUserByUsername(name);
 
-        Vote vote = new Vote();
+        final Vote vote = new Vote();
         vote.setLaw(law);
         vote.setUser(user);
         vote.setValue(Vote.Value.values()[value]);
 
-        law.getVotes().add(vote);
         lawsManager.insertVote(vote);
 
         long votesFor = 0;
