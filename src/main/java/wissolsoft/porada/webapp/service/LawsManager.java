@@ -7,13 +7,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import wissolsoft.porada.webapp.dao.LawsDao;
+import wissolsoft.porada.webapp.dao.VotesDao;
 import wissolsoft.porada.webapp.model.Law;
+import wissolsoft.porada.webapp.model.Vote;
 
 @Service
 public class LawsManager {
 
     @Autowired
     private LawsDao lawsDao;
+
+    @Autowired
+    private VotesDao votesDao;
+
+    @Transactional
+    public void insertVote(final Vote vote) {
+        votesDao.insertVote(vote);
+    }
 
     @Transactional
     public void insertLaw(final Law law) {
