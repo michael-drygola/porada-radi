@@ -40,6 +40,45 @@ public class LawsController {
     public String lawDetails(ModelMap model, @PathVariable("lawId") long id) {
         final Law law = lawsManager.getLawById(id);
 
+
+        final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(auth != null) {
+            final String name = auth.getName(); //get logged in username
+            final User user = userManager.getUserByUsername(name);
+
+            //TODO remove copypaste
+            for(Vote v : law.getVotes()) {
+                if (v.getUser().getId() == user.getId())
+                {
+                    model.addAttribute("uservoted", true);
+                    break;
+                }
+            }
+        }
+
+        long votesFor = 0;
+        long votesAgainst = 0;
+        long votesAbstain = 0;
+        for(Vote v : law.getVotes()) {
+            switch (v.getValue()) {
+                case ABSTAIN:
+                    votesAbstain++;
+                    break;
+                case FOR:
+                    votesFor++;
+                    break;
+                case AGAINST:
+                    votesAgainst++;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        model.addAttribute("for", votesFor);
+        model.addAttribute("against", votesAgainst);
+        model.addAttribute("abstain", votesAbstain);
+
         model.addAttribute("law", law);
         return "details";
     }
@@ -81,6 +120,7 @@ public class LawsController {
             }
         }
 
+        model.addAttribute("uservoted", true);
         model.addAttribute("for", votesFor);
         model.addAttribute("against", votesAgainst);
         model.addAttribute("abstain", votesAbstain);
