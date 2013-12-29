@@ -9,7 +9,7 @@
         </tr>
         <c:forEach var="law" items="${laws}" >
           <tr>
-              <td>${law.id}</td><td><a href="${ctx}/details?law=${law.id}">${law.caption}</a></td><td>${law.formattedDate}</td>
+              <td>${law.id}</td><td><a href="${ctx}/details/${law.id}">${law.caption}</a></td><td>${law.formattedDate}</td>
           </tr>
         </c:forEach>
       </table>

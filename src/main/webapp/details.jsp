@@ -3,12 +3,25 @@
 
 <div class="future-laws sixteen columns">
   <h2>законопроект#${law.id}</h2>
-      <table border="0">
+  <h3>${law.caption}</h3>
+  <a href="${law.link}">На сайті Верховної Ради</a>
+  <p>${law.description}</p>
+  <form action="" method="post">
+    <input type="hidden" name="law" value="${law.id}" />
+    <button name="vote" value="1">ЗА</button>
+    <button name="vote" value="0">УТРИМАВСЯ</button>
+    <button name="vote" value="2">ПРОТИ</button>
+  </form>
+        <table border="1">
         <tr>
-        <th>№</th><th>назва</th><th>дата</th>
+          <th>За</th>
+          <th>Утримались</th>
+          <th>Проти</th>
         </tr>
-          <tr>
-              <td>${law.id}</td><td><a href="${law.link}">${law.caption}</a></td><td>08.01.13</td>
-          </tr>
+        <tr>
+          <td>${for}</td>
+          <td>${abstain}</td>
+          <td>${against}</td>
+        </tr>
       </table>
 </div>
