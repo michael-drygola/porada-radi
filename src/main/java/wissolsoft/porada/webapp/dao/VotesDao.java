@@ -15,12 +15,21 @@ public class VotesDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    public Session getSession() {
+        Session sess;
+        try {
+            sess = sessionFactory.getCurrentSession();
+        } catch (Exception e) {
+            sess = sessionFactory.openSession();
+        }
+        return sess;
+    }
+
     @Transactional
     public void insertVote(final Vote vote) {
-        final Session session = sessionFactory.getCurrentSession();
-        final Transaction transaction = session.beginTransaction();
+        final Session session = getSession();
         session.save(vote);
-        transaction.commit();
+        session.flush();
     }
 
 

@@ -6,7 +6,6 @@
 
 <hibernate-configuration>
   <session-factory>
-        <property name="hibernate.current_session_context_class">thread</property>
         <mapping class="org.appfuse.model.User"/>
         <mapping class="org.appfuse.model.Role"/>
         <mapping class="wissolsoft.porada.webapp.model.Law"/>
