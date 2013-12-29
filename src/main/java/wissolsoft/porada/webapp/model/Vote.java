@@ -13,7 +13,14 @@ import org.appfuse.model.User;
 public class Vote {
 
     public enum Value {
+        /** Утримався */
+        ABSTAIN,
 
+        /** За */
+        FOR,
+
+        /** Проти  */
+        AGAINST
     }
 
     @Id
