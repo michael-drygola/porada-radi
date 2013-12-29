@@ -1,5 +1,7 @@
 package wissolsoft.porada.webapp.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +40,10 @@ public class Law {
     }
     public Date getDate() {
         return date;
+    }
+    public String getFormattedDate() {
+        DateFormat df = new SimpleDateFormat("dd.MM.yy");
+        return df.format(date);
     }
     public String getDescription() {
         return description;
