@@ -20,6 +20,7 @@ public class Law {
 
     @Id
     private long id;
+    @Column(length=2048)
     private String caption;
     private Date date;
     @Column(length=2048)
