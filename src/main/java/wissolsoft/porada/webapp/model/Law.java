@@ -4,7 +4,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +19,10 @@ import javax.persistence.Table;
 public class Law {
 
     public enum Status {
-        ACCEPTED;
+        UNKNOWN,
+        RECEIVED, //Одержано проект
+        //ACCEPTED,
+        SIGNED; //Закон підписано
     }
 
     @Id
@@ -31,8 +36,14 @@ public class Law {
     private Status status;
 
     @OneToMany(mappedBy="law")
-    private List<Vote> votes = new ArrayList<Vote>();
+    private List<UserVote> votes = new ArrayList<UserVote>();
 
+    @OneToMany(mappedBy="law")
+    private Set<DeputatVote> deputatVotes = new HashSet<DeputatVote>();
+
+    public Set<DeputatVote> getDeputatVotes() {
+        return deputatVotes;
+    }
     public Law() {
     }
     public String getCaption() {
@@ -57,7 +68,7 @@ public class Law {
     public Status getStatus() {
         return status;
     }
-    public List<Vote> getVotes() {
+    public List<UserVote> getVotes() {
         return votes;
     }
     public void setCaption(String caption) {
@@ -65,6 +76,9 @@ public class Law {
     }
     public void setDate(Date date) {
         this.date = date;
+    }
+    public void setDeputatVotes(Set<DeputatVote> deputatVotes) {
+        this.deputatVotes = deputatVotes;
     }
     public void setDescription(String description) {
         this.description = description;
@@ -78,10 +92,16 @@ public class Law {
     public void setStatus(Status status) {
         this.status = status;
     }
-    public void setVotes(List<Vote> votes) {
+    public void setVotes(List<UserVote> votes) {
         this.votes = votes;
     }
 
+    @Override
+    public String toString() {
+        return "Law [id=" + id + ", caption=" + caption + ", date=" + date
+                + ", description=" + description + ", link=" + link
+                + ", status=" + status + "]";
+    }
 
 
 }

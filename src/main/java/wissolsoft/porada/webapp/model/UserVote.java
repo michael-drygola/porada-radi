@@ -9,8 +9,8 @@ import javax.persistence.Table;
 import org.appfuse.model.User;
 
 @Entity
-@Table(name="vote")
-public class Vote {
+@Table(name="user_vote")
+public class UserVote {
 
     public enum Value {
         /** Утримався */
@@ -62,6 +62,4 @@ public class Vote {
     public void setValue(Value value) {
         this.value = value;
     }
-
-
 }
