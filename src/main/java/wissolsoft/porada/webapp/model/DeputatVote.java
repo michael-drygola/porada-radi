@@ -39,6 +39,18 @@ public class DeputatVote {
 
     private Value value;
 
+    private String note;
+
+    private boolean remote;
+
+    public String getNote() {
+        return note;
+    }
+
+    public boolean isRemote() {
+        return remote;
+    }
+
     public long getId() {
         return id;
     }
@@ -55,6 +67,14 @@ public class DeputatVote {
         return value;
     }
 
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public void setRemote(boolean remote) {
+        this.remote = remote;
+    }
+
     public void setLaw(Law law) {
         this.law = law;
     }
@@ -66,4 +86,11 @@ public class DeputatVote {
     public void setValue(Value value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "DeputatVote [deputat=" + deputat + ", value=" + value
+                + ", note=" + note + ", remote=" + remote + "]";
+    }
+
 }
