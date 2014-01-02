@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import wissolsoft.porada.webapp.model.Vote;
+import wissolsoft.porada.webapp.model.UserVote;
 
 @Repository
 public class VotesDao {
@@ -26,7 +26,7 @@ public class VotesDao {
     }
 
     @Transactional
-    public void insertVote(final Vote vote) {
+    public void insertVote(final UserVote vote) {
         final Session session = getSession();
         session.save(vote);
         session.flush();

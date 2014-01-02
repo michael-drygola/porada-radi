@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import wissolsoft.porada.webapp.dao.LawsDao;
 import wissolsoft.porada.webapp.dao.VotesDao;
 import wissolsoft.porada.webapp.model.Law;
-import wissolsoft.porada.webapp.model.Vote;
+import wissolsoft.porada.webapp.model.UserVote;
 
 @Service
 public class LawsManager {
@@ -21,7 +21,7 @@ public class LawsManager {
     private VotesDao votesDao;
 
     @Transactional
-    public void insertVote(final Vote vote) {
+    public void insertVote(final UserVote vote) {
         votesDao.insertVote(vote);
     }
 
