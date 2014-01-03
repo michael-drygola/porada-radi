@@ -7,8 +7,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user_vote")
-public class DeputatVote {
+@Table(name="deputy_vote")
+public class DeputyVote {
 
     public enum Value {
         /** Утримався */
@@ -35,7 +35,7 @@ public class DeputatVote {
     private Law law;
 
     @ManyToOne
-    private Deputat deputat;
+    private Deputy deputy;
 
     private Value value;
 
@@ -59,8 +59,8 @@ public class DeputatVote {
         return law;
     }
 
-    public Deputat getDeputat() {
-        return deputat;
+    public Deputy getDeputy() {
+        return deputy;
     }
 
     public Value getValue() {
@@ -79,8 +79,8 @@ public class DeputatVote {
         this.law = law;
     }
 
-    public void setDeputat(Deputat deputat) {
-        this.deputat = deputat;
+    public void setDeputy(Deputy deputat) {
+        this.deputy = deputat;
     }
 
     public void setValue(Value value) {
@@ -89,7 +89,7 @@ public class DeputatVote {
 
     @Override
     public String toString() {
-        return "DeputatVote [deputat=" + deputat + ", value=" + value
+        return "DeputyVote [deputy=" + deputy + ", value=" + value
                 + ", note=" + note + ", remote=" + remote + "]";
     }
 

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import wissolsoft.porada.webapp.model.DeputatVote;
+import wissolsoft.porada.webapp.model.DeputyVote;
 import wissolsoft.porada.webapp.model.Law;
 import wissolsoft.porada.webapp.model.UserVote;
 import wissolsoft.porada.webapp.service.LawsManager;
@@ -27,7 +27,7 @@ import wissolsoft.porada.webapp.service.LawsManager;
 @Controller
 public class LawsController {
 
-    public static final int NUMBER_OF_DEPUTATES = 460;
+    public static final int NUMBER_OF_DEPUTATES = 450;
 
     private static final Log LOGGER = LogFactory.getLog(LawsController.class);
 
@@ -139,16 +139,16 @@ public class LawsController {
         return "details";
     }
 
-    public Map<DeputatVote.Value, Integer> calcStats(Set<DeputatVote> votes) {
-        final Map<DeputatVote.Value, Integer> stats = new HashMap<DeputatVote.Value, Integer>(5, 1);
-        for(DeputatVote.Value value : DeputatVote.Value.values()) {
+    public Map<DeputyVote.Value, Integer> calcStats(Set<DeputyVote> votes) {
+        final Map<DeputyVote.Value, Integer> stats = new HashMap<DeputyVote.Value, Integer>(5, 1);
+        for(DeputyVote.Value value : DeputyVote.Value.values()) {
             stats.put(value, 0);
         }
-        for(DeputatVote vote : votes) {
+        for(DeputyVote vote : votes) {
             stats.put(vote.getValue(), stats.get(vote.getValue()) + 1);
         }
         int totalVotes = 0;
-        for(DeputatVote.Value value : DeputatVote.Value.values()) {
+        for(DeputyVote.Value value : DeputyVote.Value.values()) {
             totalVotes += stats.get(value);
         }
         if(totalVotes != NUMBER_OF_DEPUTATES) {

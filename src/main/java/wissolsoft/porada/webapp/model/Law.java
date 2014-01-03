@@ -36,12 +36,12 @@ public class Law {
     private Status status;
 
     @OneToMany(mappedBy="law")
-    private List<UserVote> votes = new ArrayList<UserVote>();
+    private List<UserVote> userVotes = new ArrayList<UserVote>();
 
     @OneToMany(mappedBy="law")
-    private Set<DeputatVote> deputatVotes = new HashSet<DeputatVote>();
+    private Set<DeputyVote> deputatVotes = new HashSet<DeputyVote>();
 
-    public Set<DeputatVote> getDeputatVotes() {
+    public Set<DeputyVote> getDeputatVotes() {
         return deputatVotes;
     }
     public Law() {
@@ -69,7 +69,7 @@ public class Law {
         return status;
     }
     public List<UserVote> getVotes() {
-        return votes;
+        return userVotes;
     }
     public void setCaption(String caption) {
         this.caption = caption;
@@ -77,7 +77,7 @@ public class Law {
     public void setDate(Date date) {
         this.date = date;
     }
-    public void setDeputatVotes(Set<DeputatVote> deputatVotes) {
+    public void setDeputatVotes(Set<DeputyVote> deputatVotes) {
         this.deputatVotes = deputatVotes;
     }
     public void setDescription(String description) {
@@ -93,7 +93,7 @@ public class Law {
         this.status = status;
     }
     public void setVotes(List<UserVote> votes) {
-        this.votes = votes;
+        this.userVotes = votes;
     }
 
     @Override
