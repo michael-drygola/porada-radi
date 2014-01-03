@@ -33,10 +33,10 @@ public final class RadaParser {
     public static void main(String[] args) {
         //TODO main is for debug only, remove it
         try {
-            final RadaParser parser = new RadaParser();
+            //final RadaParser parser = new RadaParser();
             //parser.parseDeputates(Jsoup.connect(BASE_URL + "/pls/site2/fetch_mps?skl_id=8").get()); //"All deputates"
             //parser.parseDeputates(Jsoup.connect(BASE_URL + "/pls/site2/fetch_mps?skl_id=8&pid_id=-3").get()); //Those who out
-            parser.parseDeputates(Jsoup.parse(new File("src/test/resources/rada-mock/deputy_list.html"), "cp1251"));
+            parseDeputates(Jsoup.parse(new File("src/test/resources/rada-mock/deputy_list.html"), "cp1251"));
             //parser.fetchLaws(BASE_URL + "/pls/zweb2/webproc555");
             //parser.fetchLaw(BASE_URL + "/pls/zweb2/webproc4_1?pf3511=49375"); //+ "#ui-tabs-2");
             //parser.fetchLawVoteResults(BASE_URL + "/pls/radan_gs09/ns_zakon_gol_dep_wohf?zn=3787");
@@ -46,7 +46,7 @@ public final class RadaParser {
         }
     }
 
-    public Set<Deputy> parseDeputates(final Document doc) throws IOException {
+    public static Set<Deputy> parseDeputates(final Document doc) throws IOException {
         final Set<Deputy> deputates = new HashSet<Deputy>();
         final Elements atags = doc.select("p.title a[href]");
         for(Element a : atags){
@@ -63,7 +63,7 @@ public final class RadaParser {
         return deputates;
     }
 
-    public List<Law> fetchLaws(final String url) throws IOException {
+    public static List<Law> fetchLaws(final String url) throws IOException {
         final List<Law> lawList = new ArrayList<Law>();
         final Document doc = Jsoup.connect(url).get();
         final Elements atags = doc.select("table tr td a[href]");
@@ -80,7 +80,7 @@ public final class RadaParser {
         return lawList;
     }
 
-    public Law fetchLaw(final String url) throws IOException, ParseException {
+    public static Law fetchLaw(final String url) throws IOException, ParseException {
         final Law law = new Law();
         law.setLink(url);
         final Document doc = Jsoup.connect(url).get();
@@ -95,7 +95,7 @@ public final class RadaParser {
         return law;
     }
 
-    public Set<DeputyVote> fetchLawVoteResults(String url) throws IOException {
+    public static Set<DeputyVote> fetchLawVoteResults(String url) throws IOException {
         final Set<DeputyVote> votes = new HashSet<DeputyVote>();
         final Document doc = Jsoup.connect(url).get();
         for(Element a : doc.select("div.fr_nazva a"))
@@ -184,5 +184,9 @@ public final class RadaParser {
     private static String abbreverateName(final String fullName) {
         String[] fio = fullName.split(" ");
         return fio[0] + " " + fio[1].charAt(0) + ". " + fio[2].charAt(0) + ".";
+    }
+
+    private RadaParser() {
+        //it's an utility class
     }
 }
