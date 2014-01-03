@@ -9,6 +9,8 @@
         <mapping class="org.appfuse.model.User"/>
         <mapping class="org.appfuse.model.Role"/>
         <mapping class="wissolsoft.porada.webapp.model.Law"/>
+        <mapping class="wissolsoft.porada.webapp.model.Deputy"/>
         <mapping class="wissolsoft.porada.webapp.model.UserVote"/>
+        <mapping class="wissolsoft.porada.webapp.model.DeputyVote"/>
     </session-factory>
 </hibernate-configuration>
